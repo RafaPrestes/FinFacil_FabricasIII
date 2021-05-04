@@ -51,8 +51,8 @@ public class ViewMenu extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         usuario = new javax.swing.JMenu();
         cadastro = new javax.swing.JMenu();
-        txtCadastro = new javax.swing.JMenuItem();
         trocarSenha = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         txtSaldo = new javax.swing.JMenuItem();
         txtSair = new javax.swing.JMenuItem();
         financas = new javax.swing.JMenu();
@@ -60,6 +60,9 @@ public class ViewMenu extends javax.swing.JFrame {
         txtValoraReceber = new javax.swing.JMenuItem();
         txtContasaPagar = new javax.swing.JMenuItem();
         txtGerarRelatorio = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         ajuda = new javax.swing.JMenu();
         ajudaSobre = new javax.swing.JMenuItem();
         ajudaVersao = new javax.swing.JMenuItem();
@@ -92,15 +95,7 @@ public class ViewMenu extends javax.swing.JFrame {
 
         usuario.setText("Usuário");
 
-        cadastro.setText("Cadastro");
-
-        txtCadastro.setText("Criar novo cadastro");
-        txtCadastro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastroActionPerformed(evt);
-            }
-        });
-        cadastro.add(txtCadastro);
+        cadastro.setText("Meu Cadastro");
 
         trocarSenha.setText("Trocar/Esqueci a senha");
         trocarSenha.addActionListener(new java.awt.event.ActionListener() {
@@ -109,6 +104,9 @@ public class ViewMenu extends javax.swing.JFrame {
             }
         });
         cadastro.add(trocarSenha);
+
+        jMenuItem1.setText("Meu dados");
+        cadastro.add(jMenuItem1);
 
         usuario.add(cadastro);
 
@@ -147,6 +145,16 @@ public class ViewMenu extends javax.swing.JFrame {
 
         jMenuBar1.add(financas);
 
+        jMenu2.setText("Categorias");
+
+        jMenuItem2.setText("Ver categorias");
+        jMenu2.add(jMenuItem2);
+
+        jMenuItem3.setText("Inserir categorias");
+        jMenu2.add(jMenuItem3);
+
+        jMenuBar1.add(jMenu2);
+
         ajuda.setText("Ajuda");
 
         ajudaSobre.setText("Sobre");
@@ -178,21 +186,10 @@ public class ViewMenu extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void trocarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trocarSenhaActionPerformed
-        TrocarSenha tela = new TrocarSenha();
-        tela.setVisible(true);
-    }//GEN-LAST:event_trocarSenhaActionPerformed
-
     private void txtSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSairActionPerformed
        WindowEvent winEvent = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winEvent);
     }//GEN-LAST:event_txtSairActionPerformed
-
-    private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
-        ViewCadastro tela = new ViewCadastro();
-        tela.setVisible(true);
-      
-    }//GEN-LAST:event_btnCadastroActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         if(JOptionPane.showConfirmDialog(this, "Deseja realmente sair?","Atenção",JOptionPane.YES_NO_OPTION) == JOptionPane.NO_OPTION){
@@ -205,6 +202,11 @@ public class ViewMenu extends javax.swing.JFrame {
     private void txtContasaPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContasaPagarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtContasaPagarActionPerformed
+
+    private void trocarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trocarSenhaActionPerformed
+        TrocarSenha tela = new TrocarSenha();
+        tela.setVisible(true);
+    }//GEN-LAST:event_trocarSenhaActionPerformed
 
     
      
@@ -253,11 +255,14 @@ public class ViewMenu extends javax.swing.JFrame {
     private javax.swing.JMenu financas;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel lblUsuarioAutenticado;
     private javax.swing.JMenuItem trocarSenha;
-    private javax.swing.JMenuItem txtCadastro;
     private javax.swing.JMenuItem txtContasaPagar;
     private javax.swing.JMenuItem txtGerarRelatorio;
     private javax.swing.JMenuItem txtSair;
