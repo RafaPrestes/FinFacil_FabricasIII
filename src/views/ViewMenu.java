@@ -62,13 +62,14 @@ public class ViewMenu extends javax.swing.JFrame {
         txtGerarRelatorio = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        MenuItemInserirCategoria = new javax.swing.JMenuItem();
         ajuda = new javax.swing.JMenu();
         ajudaSobre = new javax.swing.JMenuItem();
         ajudaVersao = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu");
+        setExtendedState(6);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -127,7 +128,7 @@ public class ViewMenu extends javax.swing.JFrame {
 
         jMenu1.setText("Inserir valores");
 
-        txtValoraReceber.setText("Valor a receber");
+        txtValoraReceber.setText("Receita");
         jMenu1.add(txtValoraReceber);
 
         txtContasaPagar.setText("Contas a pagar");
@@ -148,10 +149,20 @@ public class ViewMenu extends javax.swing.JFrame {
         jMenu2.setText("Categorias");
 
         jMenuItem2.setText("Ver categorias");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem2);
 
-        jMenuItem3.setText("Inserir categorias");
-        jMenu2.add(jMenuItem3);
+        MenuItemInserirCategoria.setText("Inserir categorias");
+        MenuItemInserirCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuItemInserirCategoriaActionPerformed(evt);
+            }
+        });
+        jMenu2.add(MenuItemInserirCategoria);
 
         jMenuBar1.add(jMenu2);
 
@@ -208,6 +219,26 @@ public class ViewMenu extends javax.swing.JFrame {
         tela.setVisible(true);
     }//GEN-LAST:event_trocarSenhaActionPerformed
 
+    private void MenuItemInserirCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemInserirCategoriaActionPerformed
+        InserirCategoria tela = InserirCategoria.getInstance();
+        tela.pack();
+        if(!tela.isVisible()){
+            jDesktopPane1.add(tela);
+            tela.setVisible(true);
+        }else
+            tela.moveToFront();
+    }//GEN-LAST:event_MenuItemInserirCategoriaActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        VerCategorias tela = VerCategorias.getInstance();
+        tela.pack();
+        if(!tela.isVisible()){
+            jDesktopPane1.add(tela);
+            tela.setVisible(true);
+        }else
+            tela.moveToFront();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     
      
     /**
@@ -246,6 +277,7 @@ public class ViewMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem MenuItemInserirCategoria;
     private javax.swing.JMenu ajuda;
     private javax.swing.JMenuItem ajudaSobre;
     private javax.swing.JMenuItem ajudaVersao;
@@ -259,7 +291,6 @@ public class ViewMenu extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel lblUsuarioAutenticado;
     private javax.swing.JMenuItem trocarSenha;
