@@ -10,6 +10,14 @@ package views;
  * @author Gabs Games
  */
 public class ViewSaldo extends javax.swing.JInternalFrame {
+    
+     private static ViewSaldo myInstance;
+    
+    public static ViewSaldo getInstance(){
+        if(myInstance == null)
+            myInstance = new ViewSaldo();
+        return myInstance;
+    }
 
     /**
      * Creates new form ViewSaldo
@@ -36,6 +44,11 @@ public class ViewSaldo extends javax.swing.JInternalFrame {
         jButton2 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
 
         jPanel1.setBackground(new java.awt.Color(204, 255, 204));
 

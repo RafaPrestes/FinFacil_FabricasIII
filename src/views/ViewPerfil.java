@@ -10,6 +10,14 @@ package views;
  * @author Gabs Games
  */
 public class ViewPerfil extends javax.swing.JInternalFrame {
+    
+    private static ViewPerfil myInstance;
+    
+    public static ViewPerfil getInstance(){
+        if(myInstance == null)
+            myInstance = new ViewPerfil();
+        return myInstance;
+    }
 
     /**
      * Creates new form ViewPerfil
@@ -41,6 +49,11 @@ public class ViewPerfil extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+
         jPanel1.setBackground(new java.awt.Color(204, 255, 204));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -53,10 +66,16 @@ public class ViewPerfil extends javax.swing.JInternalFrame {
         jLabel3.setText("Usuario");
 
         jTextField1.setEditable(false);
+        jTextField1.setText("rafael");
+        jTextField1.setEnabled(false);
 
         jTextField2.setEditable(false);
+        jTextField2.setText("rafel.teste@gmail.com");
+        jTextField2.setEnabled(false);
 
         jTextField3.setEditable(false);
+        jTextField3.setText("rafeal.teste");
+        jTextField3.setEnabled(false);
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setText("Editar");

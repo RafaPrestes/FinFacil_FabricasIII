@@ -56,10 +56,8 @@ public class ViewMenu extends javax.swing.JFrame {
         txtSaldo = new javax.swing.JMenuItem();
         txtSair = new javax.swing.JMenuItem();
         financas = new javax.swing.JMenu();
-        jMenu1 = new javax.swing.JMenu();
-        txtValoraReceber = new javax.swing.JMenuItem();
-        txtContasaPagar = new javax.swing.JMenuItem();
         txtGerarRelatorio = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         MenuItemInserirCategoria = new javax.swing.JMenuItem();
@@ -107,11 +105,21 @@ public class ViewMenu extends javax.swing.JFrame {
         cadastro.add(trocarSenha);
 
         jMenuItem1.setText("Meu dados");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         cadastro.add(jMenuItem1);
 
         usuario.add(cadastro);
 
         txtSaldo.setText("Saldo");
+        txtSaldo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSaldoActionPerformed(evt);
+            }
+        });
         usuario.add(txtSaldo);
 
         txtSair.setText("Sair");
@@ -126,23 +134,21 @@ public class ViewMenu extends javax.swing.JFrame {
 
         financas.setText("Lançamentos");
 
-        jMenu1.setText("Inserir valores");
-
-        txtValoraReceber.setText("Receita");
-        jMenu1.add(txtValoraReceber);
-
-        txtContasaPagar.setText("Contas a pagar");
-        txtContasaPagar.addActionListener(new java.awt.event.ActionListener() {
+        txtGerarRelatorio.setText("Ver contas");
+        txtGerarRelatorio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtContasaPagarActionPerformed(evt);
+                txtGerarRelatorioActionPerformed(evt);
             }
         });
-        jMenu1.add(txtContasaPagar);
-
-        financas.add(jMenu1);
-
-        txtGerarRelatorio.setText("Gerar relatório");
         financas.add(txtGerarRelatorio);
+
+        jMenuItem3.setText("Inserir contas");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        financas.add(jMenuItem3);
 
         jMenuBar1.add(financas);
 
@@ -197,11 +203,6 @@ public class ViewMenu extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSairActionPerformed
-       WindowEvent winEvent = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
-        Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winEvent);
-    }//GEN-LAST:event_txtSairActionPerformed
-
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         if(JOptionPane.showConfirmDialog(this, "Deseja realmente sair?","Atenção",JOptionPane.YES_NO_OPTION) == JOptionPane.NO_OPTION){
             setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -210,15 +211,6 @@ public class ViewMenu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowClosing
 
-    private void txtContasaPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContasaPagarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtContasaPagarActionPerformed
-
-    private void trocarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trocarSenhaActionPerformed
-        TrocarSenha tela = new TrocarSenha();
-        tela.setVisible(true);
-    }//GEN-LAST:event_trocarSenhaActionPerformed
-
     private void MenuItemInserirCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemInserirCategoriaActionPerformed
         InserirCategoria tela = InserirCategoria.getInstance();
         tela.pack();
@@ -226,7 +218,7 @@ public class ViewMenu extends javax.swing.JFrame {
             jDesktopPane1.add(tela);
             tela.setVisible(true);
         }else
-            tela.moveToFront();
+        tela.moveToFront();
     }//GEN-LAST:event_MenuItemInserirCategoriaActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -236,8 +228,62 @@ public class ViewMenu extends javax.swing.JFrame {
             jDesktopPane1.add(tela);
             tela.setVisible(true);
         }else
-            tela.moveToFront();
+        tela.moveToFront();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void txtSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSairActionPerformed
+        WindowEvent winEvent = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
+        Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winEvent);
+    }//GEN-LAST:event_txtSairActionPerformed
+
+    private void trocarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trocarSenhaActionPerformed
+        TrocarSenha tela = new TrocarSenha();
+        tela.setVisible(true);
+    }//GEN-LAST:event_trocarSenhaActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        InserirConta tela = InserirConta.getInstance();
+        tela.pack();
+        if(!tela.isVisible()){
+            jDesktopPane1.add(tela);
+            tela.setVisible(true);
+        }else
+        tela.moveToFront();
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void txtGerarRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGerarRelatorioActionPerformed
+        // TODO add your handling code here:
+        VerContas tela = VerContas.getInstance();
+        tela.pack();
+        if(!tela.isVisible()){
+            jDesktopPane1.add(tela);
+            tela.setVisible(true);
+        }else
+        tela.moveToFront();
+    }//GEN-LAST:event_txtGerarRelatorioActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        ViewPerfil tela = ViewPerfil.getInstance();
+        tela.pack();
+        if(!tela.isVisible()){
+            jDesktopPane1.add(tela);
+            tela.setVisible(true);
+        }else
+        tela.moveToFront();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void txtSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSaldoActionPerformed
+        // TODO add your handling code here:
+        ViewSaldo tela = ViewSaldo.getInstance();
+        tela.pack();
+        if(!tela.isVisible()){
+            jDesktopPane1.add(tela);
+            tela.setVisible(true);
+        }else
+        tela.moveToFront();
+    }//GEN-LAST:event_txtSaldoActionPerformed
 
     
      
@@ -286,19 +332,17 @@ public class ViewMenu extends javax.swing.JFrame {
     private javax.swing.Box.Filler filler3;
     private javax.swing.JMenu financas;
     private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel lblUsuarioAutenticado;
     private javax.swing.JMenuItem trocarSenha;
-    private javax.swing.JMenuItem txtContasaPagar;
     private javax.swing.JMenuItem txtGerarRelatorio;
     private javax.swing.JMenuItem txtSair;
     private javax.swing.JMenuItem txtSaldo;
-    private javax.swing.JMenuItem txtValoraReceber;
     private javax.swing.JMenu usuario;
     // End of variables declaration//GEN-END:variables
 }
