@@ -12,16 +12,16 @@
   
 - [X] Menu
    
-- [ ] Perfil
+- [X] Perfil
 
-- [ ] Consultar Saldo
+- [X] Consultar Saldo
   
-- [ ] Criar Lancamentos
+- [X] Criar Lancamentos
   
-- [ ] Visualizar lancamentos
+- [X] Visualizar lancamentos
   
-- [ ] Criar Categorias
+- [X] Criar Categorias
   
-- [ ] Visualizar Categorias
+- [X] Visualizar Categorias
   
-- [ ] Gerar Relatorio
+- [X] Gerar Relatorio
