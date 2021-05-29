@@ -284,6 +284,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Criar "/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCriarContaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="java.awt.Button" name="button1">
           <Properties>

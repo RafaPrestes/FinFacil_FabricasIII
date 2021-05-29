@@ -5,6 +5,13 @@
  */
 package views;
 
+import dao.jpa.CategoriaDAO;
+import entity.Categoria;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.TableModel;
+import utils.TableModelCreator;
+
 /**
  *
  * @author Gabs Games
@@ -69,12 +76,12 @@ public class VerCategorias extends javax.swing.JInternalFrame {
         jButton8 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
+        tblCategoria = new javax.swing.JTable();
+        txtPesqCategoria = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
+        btnBuscar = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(204, 255, 204));
         setClosable(true);
@@ -343,7 +350,7 @@ public class VerCategorias extends javax.swing.JInternalFrame {
 
         jPanel3.setBackground(new java.awt.Color(204, 255, 204));
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        tblCategoria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -351,20 +358,25 @@ public class VerCategorias extends javax.swing.JInternalFrame {
 
             }
         ));
-        jScrollPane3.setViewportView(jTable3);
+        jScrollPane3.setViewportView(tblCategoria);
 
         jLabel12.setText("Pesquisar Categoria");
 
-        jButton10.setText("Buscar");
-
-        jButton11.setText("Editar");
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
+                btnBuscarActionPerformed(evt);
             }
         });
 
-        jButton12.setText("Excluir");
+        btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
+
+        btnExcluir.setText("Excluir");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -376,12 +388,12 @@ public class VerCategorias extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
                     .addComponent(jLabel12)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jButton10)
+                        .addComponent(btnBuscar)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton11)
+                        .addComponent(btnEditar)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton12))
-                    .addComponent(jTextField1))
+                        .addComponent(btnExcluir))
+                    .addComponent(txtPesqCategoria))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -390,14 +402,14 @@ public class VerCategorias extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtPesqCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton10)
-                    .addComponent(jButton11)
-                    .addComponent(jButton12))
+                    .addComponent(btnBuscar)
+                    .addComponent(btnEditar)
+                    .addComponent(btnExcluir))
                 .addGap(17, 17, 17))
         );
 
@@ -443,16 +455,29 @@ public class VerCategorias extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton11ActionPerformed
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        atualizarTabela();
+    }//GEN-LAST:event_btnEditarActionPerformed
 
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        atualizarTabela();
+    }//GEN-LAST:event_btnBuscarActionPerformed
+        private void atualizarTabela() {
+        try {
+            List<Categoria> listaCategoria = new CategoriaDAO().selecionarTodos();
+            TableModel tableModelCategoria = TableModelCreator.createTableModel(Categoria.class, listaCategoria, null);
+            tblCategoria.setModel(tableModelCategoria);
+            
+        } catch (Exception ex) {
+
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -487,7 +512,7 @@ public class VerCategorias extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tblCategoria;
+    private javax.swing.JTextField txtPesqCategoria;
     // End of variables declaration//GEN-END:variables
 }

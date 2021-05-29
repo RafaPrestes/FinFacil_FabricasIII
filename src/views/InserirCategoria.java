@@ -5,6 +5,10 @@
  */
 package views;
 
+import dao.jpa.CategoriaDAO;
+import entity.Categoria;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Gabs Games
@@ -19,9 +23,7 @@ public class InserirCategoria extends javax.swing.JInternalFrame {
         return myInstance;
     }
 
-    /**
-     * Creates new form InserirCategoria
-     */
+    private Categoria categoria;
     public InserirCategoria() {
         initComponents();
     }
@@ -49,12 +51,12 @@ public class InserirCategoria extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnInserir = new javax.swing.JButton();
+        btnLimpar = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jTextField2 = new javax.swing.JTextField();
+        txtDescricaoCateg = new javax.swing.JTextArea();
+        txtNomeCategoria = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
 
         jLabel4.setText("Data de Vencimento");
@@ -94,15 +96,20 @@ public class InserirCategoria extends javax.swing.JInternalFrame {
 
         jPanel1.setBackground(new java.awt.Color(204, 255, 204));
 
-        jButton3.setText("Inserir");
+        btnInserir.setText("Inserir");
+        btnInserir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInserirActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("Limpar");
+        btnLimpar.setText("Limpar");
 
         jLabel9.setText("Descrição");
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        txtDescricaoCateg.setColumns(20);
+        txtDescricaoCateg.setRows(5);
+        jScrollPane2.setViewportView(txtDescricaoCateg);
 
         jLabel6.setText("Nome");
 
@@ -117,11 +124,11 @@ public class InserirCategoria extends javax.swing.JInternalFrame {
                         .addComponent(jLabel9)
                         .addComponent(jLabel6)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
-                        .addComponent(jTextField2))
+                        .addComponent(txtNomeCategoria))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnInserir, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -130,15 +137,15 @@ public class InserirCategoria extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtNomeCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(btnInserir)
+                    .addComponent(btnLimpar))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
@@ -158,12 +165,30 @@ public class InserirCategoria extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirActionPerformed
+        if(categoria == null){
+            categoria = new Categoria();
+        }
+        categoria.setNome(txtNomeCategoria.getText());
+        categoria.setDescricao(txtDescricaoCateg.getText());
+        categoria.setId(0);
+        
+        if(categoria.getId() == 0)
+            new CategoriaDAO().inserir(categoria); 
+        else
+            new CategoriaDAO().editar(categoria);
+        
+        JOptionPane.showMessageDialog(this, "Inserido com súcesso!" , "Atenção", JOptionPane.INFORMATION_MESSAGE);
+        dispose();
+        
+    }//GEN-LAST:event_btnInserirActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnInserir;
+    private javax.swing.JButton btnLimpar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JFormattedTextField jFormattedTextField1;
@@ -178,8 +203,8 @@ public class InserirCategoria extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextArea txtDescricaoCateg;
+    private javax.swing.JTextField txtNomeCategoria;
     // End of variables declaration//GEN-END:variables
 }

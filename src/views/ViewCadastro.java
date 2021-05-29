@@ -5,6 +5,10 @@
  */
 package views;
 
+import dao.jpa.UsuarioDAO;
+import entity.Usuario;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Usuário
@@ -113,6 +117,11 @@ public class ViewCadastro extends javax.swing.JFrame {
 
         btnCriarConta.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnCriarConta.setText("Criar ");
+        btnCriarConta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCriarContaActionPerformed(evt);
+            }
+        });
 
         button1.setFont(new java.awt.Font("Dialog", 2, 12)); // NOI18N
         button1.setForeground(new java.awt.Color(255, 0, 0));
@@ -219,6 +228,33 @@ public class ViewCadastro extends javax.swing.JFrame {
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
            dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void btnCriarContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarContaActionPerformed
+       Usuario usuarios = new Usuario();
+       
+       usuarios.setNomeCompleto(txtCriarUsuario1.getText());
+       usuarios.setUsuario(txtCriarUsuario.getText());
+       usuarios.setEmail(txtCriarEmail.getText());
+       usuarios.setSenha(txtCriarSenha.getText());
+       
+       // Validação de dados
+       if(txtCriarUsuario.getText().isEmpty() || txtCriarUsuario1.getText().isEmpty() || 
+               txtCriarEmail.getText().isEmpty() || txtCriarSenha.getText().isEmpty()){
+          
+       // Inserindo o usuario     
+       }else{
+           UsuarioDAO dao = new UsuarioDAO();
+           dao.inserir(usuarios);
+           JOptionPane.showMessageDialog(null, "Usuário " + txtCriarUsuario + "cadastrado com súcesso!");
+       }
+       
+       //Apagando os campos
+       txtCriarEmail.setText("");
+       txtCriarSenha.setText("");
+       txtCriarUsuario.setText("");
+       txtCriarUsuario1.setText("");
+           
+    }//GEN-LAST:event_btnCriarContaActionPerformed
 
     /**
      * @param args the command line arguments
